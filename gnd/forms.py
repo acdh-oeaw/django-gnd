@@ -7,9 +7,10 @@ class GndForm(forms.Form):
         label='GND',
         widget=GndAcWidget(
             options={
-                'placeholder': 'Start Typing',
+                'placeholder': 'Search the GND',
                 'multiple': False,
-                'maximum-selection-length': 1
+                'maximum-selection-length': 1,
+                'minimumInputLength': 3
             }
         ),
     )

@@ -17,7 +17,6 @@ $(".custom-select").select2({
       },
       cache: true,
     },
-    placeholder: 'Start typing',
     minimumInputLength: 3,
     templateResult: formatRepo,
     templateSelection: formatRepoSelection
@@ -43,7 +42,7 @@ $(".custom-select").select2({
     if (repo.id === '') {
       result = repo.text
     } else {
-      result = `${repo.label}|${repo.id}`
+      result = `${repo.label} || ${repo.category} || ${repo.id}`
     }
     return result
   }
