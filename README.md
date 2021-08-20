@@ -1,6 +1,6 @@
 # django-gnd
 
-A python package to query and store data from [Lobid's GND-API](https://lobid.org/gnd)
+A django package to query and store data from [Lobid's GND-API](https://lobid.org/gnd)
 
 ## install
 

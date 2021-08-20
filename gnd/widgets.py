@@ -36,5 +36,4 @@ class GndAcWidget(widgets.Select):
         attrs = attrs or {}
         options = kwargs.pop('options', {})
         new_attrs = self.update_attrs(options, attrs)
-
         super().__init__(new_attrs)

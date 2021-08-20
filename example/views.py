@@ -1,8 +1,23 @@
 from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
-from example.models import MyText
+from django.views.generic.edit import CreateView
+from example.models import MyText, Person
 
 from gnd.forms import GndForm
+from . forms import PersonForm
+
+
+class PersonCreateView(CreateView):
+
+    model = Person
+    form_class = PersonForm
+    template_name = 'example/create_person.html'
+
+
+class PersonDetailView(DetailView):
+
+    model = Person
+    template_name = 'example/detail_person.html'
 
 
 class IndexView(TemplateView):
