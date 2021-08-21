@@ -15,7 +15,6 @@ class GndAcWidget(widgets.Select):
 
     def update_attrs(self, options, attrs):
         attrs = self.fix_class(attrs)
-
         for key, val in options.items():
             attrs['data-{}'.format(key)] = val
 

@@ -1,5 +1,5 @@
 from datetime import datetime
-from dateutil.parser import parse
+from dateutil.parser import parse, ParserError
 from django.db import models
 from pylobid.pylobid import PyLobidClient, PyLobidPerson
 from . fields import GndField
@@ -59,7 +59,13 @@ class GndPersonBase(GndBaseModel):
             if isinstance(py_ent, PyLobidPerson):
                 self.gnd_birth_date_written = py_ent.life_span['birth_date_str']
                 self.gnd_death_date_written = py_ent.life_span['death_date_str']
-                self.gnd_birth_date = parse(self.gnd_birth_date_written)
-                self.gnd_death_date = parse(self.gnd_death_date_written)
+                try:
+                    self.gnd_birth_date = parse(self.gnd_birth_date_written)
+                except ParserError:
+                    pass
+                try:
+                    self.gnd_death_date = parse(self.gnd_death_date_written)
+                except ParserError:
+                    pass
                 self.gnd_gender = fetch_gender(self.gnd_payload)
         super().save(*args, **kwargs)

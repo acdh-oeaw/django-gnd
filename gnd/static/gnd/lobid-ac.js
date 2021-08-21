@@ -1,4 +1,7 @@
-$(".custom-select").select2({
+const hiddenGnd = document.getElementById('id_hidden_gnd').value || false
+console.log(hiddenGnd)
+
+$("#id_gnd_gnd_id").select2({
     ajax: {
       url: "https://lobid.org/gnd/search?format=json%3Asuggest",
       dataType: 'json',
@@ -10,16 +13,17 @@ $(".custom-select").select2({
         };
       },
       processResults: function (data) {
-
         return {
           results: data,
         };
       },
       cache: true,
     },
+    allowClear: true,
     minimumInputLength: 3,
     templateResult: formatRepo,
     templateSelection: formatRepoSelection
+    
   });
   
   function formatRepo (repo) {
@@ -41,8 +45,25 @@ $(".custom-select").select2({
     let result;
     if (repo.id === '') {
       result = repo.text
+    } else if (repo.selected == true ){
+      result = repo.text
     } else {
       result = `${repo.label} || ${repo.category} || ${repo.id}`
     }
     return result
   }
+
+if (hiddenGnd) {
+  var gndSelect = $('#id_gnd_gnd_id');
+    $.ajax({
+      type: 'GET',
+      url: `https://lobid.org/gnd/search?format=json%3Asuggest&q=${hiddenGnd}`
+  }).then(function (data) {
+      var repo = data[0]
+      // create the option and append to Select2
+      var option = new Option(formatRepoSelection (repo), repo.id, true, true);
+      gndSelect.append(option).trigger('select');
+  });
+} else {
+  console.log('noId')
+}

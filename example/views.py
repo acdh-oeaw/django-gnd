@@ -1,7 +1,7 @@
 from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
 from example.models import MyText, Person
 
@@ -19,6 +19,13 @@ class PersonCreateView(CreateView):
     model = Person
     form_class = PersonForm
     template_name = 'example/create_person.html'
+
+
+class PersonEditView(UpdateView):
+
+    model = Person
+    form_class = PersonForm
+    template_name = 'example/edit_person.html'
 
 
 class PersonDetailView(DetailView):
