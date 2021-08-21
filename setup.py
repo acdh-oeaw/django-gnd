@@ -35,7 +35,9 @@ setup(
     ],
     include_package_data=True,
     install_requires=[
-        'pylobid>=1.3'
+        'Django>=3.1',
+        'pylobid>=1.3.1',
+        'python-dateutil>=2.8'
     ],
     license="MIT",
     zip_safe=False,
