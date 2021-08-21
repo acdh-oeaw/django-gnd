@@ -1,4 +1,14 @@
-const hiddenGnd = document.getElementById('id_hidden_gnd').value || false
+function getGndId(id) {
+  try {
+    var hiddenGnd = document.getElementById(id).value || false
+  }
+  catch {
+    var hiddenGnd = false
+  }
+  return hiddenGnd
+}
+
+const hiddenGnd = getGndId('id_hidden_gnd')
 console.log(hiddenGnd)
 
 $("#id_gnd_gnd_id").select2({
@@ -60,7 +70,6 @@ if (hiddenGnd) {
       url: `https://lobid.org/gnd/search?format=json%3Asuggest&q=${hiddenGnd}`
   }).then(function (data) {
       var repo = data[0]
-      // create the option and append to Select2
       var option = new Option(formatRepoSelection (repo), repo.id, true, true);
       gndSelect.append(option).trigger('select');
   });
