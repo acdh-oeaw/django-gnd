@@ -10,8 +10,7 @@
 <body>
 
 <div class="jumbotron text-center">
-  <h1>{{ object.gnd_gnd_id }}</h1>
-  <h2>{{ object.gnd_pref_name }}</h2>
+  <h1>{{ object }}</h1>
   <a href="{% url 'create' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Create another GND Object</a>
   <h3><small>gnd-loaded: {{ object.gnd_created }}</small></h3>
   <p>

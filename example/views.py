@@ -1,10 +1,17 @@
 from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView
+
 from example.models import MyText, Person
 
 from gnd.forms import GndForm
 from . forms import PersonForm
+
+
+class PersonListView(ListView):
+    model = Person
+    paginate_by = 10
 
 
 class PersonCreateView(CreateView):

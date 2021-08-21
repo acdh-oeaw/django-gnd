@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
-from gnd.models import GndBaseModel
+from gnd.models import GndPersonBase
 
 
 class MyText(models.Model):
@@ -12,7 +12,7 @@ class MyText(models.Model):
         return self.title
 
 
-class Person(GndBaseModel):
+class Person(GndPersonBase):
     title = models.CharField(max_length=250, blank=True, null=True)
 
     def get_absolute_url(self):
