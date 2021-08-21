@@ -7,7 +7,6 @@ class PersonForm(forms.ModelForm):
 
     class Meta:
         model = Person
-        exclude = [
-            "gnd_pref_name",
-            "gnd_payload"
+        fields = [
+            'gnd_gnd_id',
         ]

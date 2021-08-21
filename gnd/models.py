@@ -6,7 +6,7 @@ from . fields import GndField
 
 class GndBaseModel(models.Model):
     gnd_gnd_id = GndField(
-        blank=True, null=True
+        blank=True, null=True, unique=True
     )
     gnd_pref_name = models.CharField(
         blank=True, null=True, max_length=250
