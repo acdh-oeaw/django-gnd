@@ -1,7 +1,9 @@
 from datetime import datetime
+from dateutil.parser import parse
 from django.db import models
 from pylobid.pylobid import PyLobidClient, PyLobidPerson
 from . fields import GndField
+from . utils import fetch_gender
 
 
 class GndBaseModel(models.Model):
@@ -32,11 +34,20 @@ class GndBaseModel(models.Model):
 
 
 class GndPersonBase(GndBaseModel):
+    gnd_gender = models.CharField(
+        blank=True, null=True, max_length=250
+    )
     gnd_birth_date_written = models.CharField(
         blank=True, null=True, max_length=250
     )
     gnd_death_date_written = models.CharField(
         blank=True, null=True, max_length=250
+    )
+    gnd_birth_date = models.DateField(
+        blank=True, null=True
+    )
+    gnd_death_date = models.DateField(
+        blank=True, null=True
     )
 
     class Meta:
@@ -44,8 +55,11 @@ class GndPersonBase(GndBaseModel):
 
     def save(self, *args, **kwargs):
         if self.gnd_gnd_id and not self.gnd_created:
-            py_ent = PyLobidClient(self.gnd_gnd_id, fetch_related=True).factory()
+            py_ent = PyLobidClient(self.gnd_gnd_id, fetch_related=False).factory()
             if isinstance(py_ent, PyLobidPerson):
                 self.gnd_birth_date_written = py_ent.life_span['birth_date_str']
                 self.gnd_death_date_written = py_ent.life_span['death_date_str']
+                self.gnd_birth_date = parse(self.gnd_birth_date_written)
+                self.gnd_death_date = parse(self.gnd_death_date_written)
+                self.gnd_gender = fetch_gender(self.gnd_payload)
         super().save(*args, **kwargs)
