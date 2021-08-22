@@ -1,5 +1,6 @@
 [![Test](https://github.com/acdh-oeaw/django-gnd/actions/workflows/test.yml/badge.svg)](https://github.com/acdh-oeaw/django-gnd/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/acdh-oeaw/django-gnd/branch/master/graph/badge.svg?token=tbKyXmzYwa)](https://codecov.io/gh/acdh-oeaw/django-gnd)
+[![PyPI version](https://badge.fury.io/py/django-gnd.svg)](https://badge.fury.io/py/django-gnd)
 
 
 # django-gnd
@@ -32,5 +33,3 @@ INSTALLED_APPS = [
 see the example Project
 
 ### GND/LOBID autocomplete widget
-
-
