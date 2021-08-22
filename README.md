@@ -1,3 +1,7 @@
+[![Test](https://github.com/acdh-oeaw/django-gnd/actions/workflows/test.yml/badge.svg)](https://github.com/acdh-oeaw/django-gnd/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/acdh-oeaw/django-gnd/branch/master/graph/badge.svg?token=tbKyXmzYwa)](https://codecov.io/gh/acdh-oeaw/django-gnd)
+
+
 # django-gnd
 
 A django package to query and store data from [Lobid's GND-API](https://lobid.org/gnd)
