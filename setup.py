@@ -26,7 +26,7 @@ version = get_version("gnd", "__init__.py")
 setup(
     name='django-gnd',
     version=version,
-    description="""A python package to integrate gnd-js in a django-project""",
+    description="""A django package to query and store data from Lobid's GND-API""",
     author='Peter Andorfer',
     author_email='peter.andorfer@oeaw.ac.at',
     url='https://github.com/acdh-oeaw/django-gnd',
@@ -41,13 +41,5 @@ setup(
     ],
     license="MIT",
     zip_safe=False,
-    keywords='django-gnd',
-    classifiers=[
-        'Development Status :: 3 - Alpha',
-        'Framework :: Django :: 3.1',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License',
-        'Natural Language :: English',
-        'Programming Language :: Python :: 3.8',
-    ],
+    keywords='django-gnd'
 )

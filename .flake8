@@ -2,6 +2,7 @@
 ignore = D203
 max-line-length = 100
 exclude =
+    gnd/tests/data.py
     example/migrations,
     recogito/migrations,
     .git,

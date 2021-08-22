@@ -4,7 +4,10 @@ GENDER_DEFAULT = [
 
 
 def fetch_gender(gnd_payload):
-    gender_list = gnd_payload.get(
-        'gender', GENDER_DEFAULT
-    )
+    try:
+        gender_list = gnd_payload.get(
+            'gender', GENDER_DEFAULT
+        )
+    except AttributeError:
+        return GENDER_DEFAULT[0]['id']
     return gender_list[0]['id']
