@@ -1,32 +1,17 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-import os
-import re
+import setuptools
+from os import path
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
 
 
-def get_version(*file_paths):
-    """Retrieves the version from gnd/__init__.py"""
-    filename = os.path.join(os.path.dirname(__file__), *file_paths)
-    version_file = open(filename).read()
-    version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
-                              version_file, re.M)
-    if version_match:
-        return version_match.group(1)
-    raise RuntimeError('Unable to find version string.')
-
-
-version = get_version("gnd", "__init__.py")
-
-
-setup(
+setuptools.setup(
     name='django-gnd',
-    version=version,
+    version='0.1.0',
     description="""A django package to query and store data from Lobid's GND-API""",
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     author='Peter Andorfer',
     author_email='peter.andorfer@oeaw.ac.at',
     url='https://github.com/acdh-oeaw/django-gnd',
