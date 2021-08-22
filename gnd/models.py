@@ -32,6 +32,20 @@ class GndBaseModel(models.Model):
             self.gnd_created = datetime.now()
         super().save(*args, **kwargs)
 
+    def gnd_thumbnail_url(self):
+        try:
+            return self.gnd_payload['depiction'][0]['thumbnail']
+        except (TypeError, KeyError):
+            return None
+
+    def gnd_html_thumb(self):
+        if self.gnd_thumbnail_url():
+            th_url = self.gnd_thumbnail_url()
+            thumb = f'<img src="{th_url}" alt="{self.gnd_pref_name}" class="img-thumbnail">'
+            return thumb
+        else:
+            return None
+
 
 class GndPersonBase(GndBaseModel):
     gnd_gender = models.CharField(

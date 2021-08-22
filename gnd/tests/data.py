@@ -143,3 +143,8 @@ MOEST = {
         "thumbnail": "https://commons.wikimedia.org/wiki/Special:FilePath/Franz%20Welser-Most%20conducting%20the%20New%20York%20Philharmonic%20-%2049616007592.jpg?width=270"
     }]
 }
+
+OBAMA = {
+    'gnd': "https://d-nb.info/gnd/132522136",
+    'thumb': 'https://commons.wikimedia.org/wiki/Special:FilePath/President%20Barack%20Obama.jpg?width=270'
+}

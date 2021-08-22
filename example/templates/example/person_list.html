@@ -20,7 +20,10 @@
     <ul>
     {% for object in page_obj %}
         <li>
-            <a href="{{ object.get_absolute_url }}">{{ object.gnd_pref_name }}</a>
+            <a href="{{ object.get_absolute_url }}">{{ object.gnd_pref_name }}</a> <br />
+            {% if object.gnd_html_thumb %} 
+                {{ object.gnd_html_thumb|safe }}
+            {% endif %}
         </li>
     {% endfor %}
     </ul>
