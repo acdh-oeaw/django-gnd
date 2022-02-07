@@ -27,8 +27,12 @@ class GndModelForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(GndModelForm, self).__init__(*args, **kwargs)
         if kwargs['instance']:
+            try:
+                initial = kwargs['instance'].gnd_gnd_id.split('/')[-1]
+            except AttributeError:
+                initial = None
             self.fields['hidden_gnd'] = forms.CharField(
-                initial=kwargs['instance'].gnd_gnd_id.split('/')[-1],
+                initial=initial,
                 required=False,
                 widget=forms.HiddenInput()
             )

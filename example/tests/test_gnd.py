@@ -1,6 +1,5 @@
 from django.test import TestCase
 from gnd.tests.tests import GND_IDS
-from gnd.tests.data import OBAMA
 
 from ..models import Person
 
@@ -25,11 +24,3 @@ class GndTestCase(TestCase):
             self.assertEqual(response.status_code, 200)
             content = f"{response.content}"
             self.assertTrue(x in content)
-
-    def test_003_thumb(self):
-        obmana = Person.objects.create(gnd_gnd_id=OBAMA['gnd'])
-        self.assertTrue(
-            OBAMA['thumb'] in obmana.gnd_html_thumb()
-        )
-        no_thumb = Person.objects.first()
-        self.assertFalse(no_thumb.gnd_html_thumb())
